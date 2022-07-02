@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="OpenWeatherMapConsumerApp" />
+        <module name="analytics" />
+        <module name="datalake-builder" />
+        <module name="sensor" />
       </profile>
     </annotationProcessing>
   </component>
