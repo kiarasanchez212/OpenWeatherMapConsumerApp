@@ -40,8 +40,7 @@ The event is sent to 'sensor.Weather' topic of the Apache ActiveMQ broker.
 ### Datalake-builder
 The task of this module is to generate the data lake that will be the data source for all the applications of the system.
 It consumes the events coming from the topic sensor.Weather and will store them on disk in a directory 
-with path datalake/events/sensor.Weather. Within the directory, the events are saved in files with the extension “.json” in such a way that
-the events are saved in temporal order and separated by time. 
+with path root directory (given as the first argument argv[0]) plus datalake/events/sensor.Weather. Within the directory, the events are saved in files with the extension “.json” in such a way that the events are saved in temporal order and separated by time. 
 
 Directory structure example:  
 datalake/events/sensor.Weather/  
