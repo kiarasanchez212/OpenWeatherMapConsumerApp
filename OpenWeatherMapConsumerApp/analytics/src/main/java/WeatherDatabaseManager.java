@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class WeatherDatabaseManager implements DatabaseManager {
 
@@ -64,26 +65,32 @@ public class WeatherDatabaseManager implements DatabaseManager {
     }
 
     @Override
-    public void databaseGet(String databaseDirectory) {
+    public ArrayList<ArrayList<String>> databaseGet(String databaseDirectory) {
         String sql = "SELECT ts,lat,lon,temperature,pressure,humidity FROM weather";
         WeatherDatabaseManager weatherDatabaseManager = new WeatherDatabaseManager();
         Connection databaseConnection = weatherDatabaseManager.openDatabase(databaseDirectory);
+        ArrayList<ArrayList<String>> databaseContentList = new ArrayList<>();
         try (databaseConnection;
              Statement statement = databaseConnection.createStatement();
              ResultSet queryResult = statement.executeQuery(sql)) {
             while (queryResult.next()) {
-                System.out.println(
-                        queryResult.getLong("ts") + "\t" +
-                                queryResult.getDouble("lat") + "\t" +
-                                queryResult.getDouble("lon") + "\t" +
-                                queryResult.getDouble("temperature") + "\t" +
-                                queryResult.getDouble("pressure") + "\t" +
-                                queryResult.getDouble("humidity"));
+                ArrayList<String> rowContentList = new ArrayList<>();
+                rowContentList.add(Long.toString(queryResult.getLong("ts")));
+                rowContentList.add(Double.toString(queryResult.getDouble("lat")));
+                rowContentList.add(Double.toString(queryResult.getDouble("lon")));
+                rowContentList.add(Double.toString(queryResult.getDouble("temperature")));
+                rowContentList.add(Double.toString(queryResult.getDouble("pressure")));
+                rowContentList.add(Double.toString(queryResult.getDouble("humidity")));
+                databaseContentList.add(rowContentList);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         weatherDatabaseManager.closeDatabase(databaseConnection);
+        for (ArrayList<String> strings : databaseContentList) {
+            System.out.println(strings);
+        }
+        return databaseContentList;
     }
 }
 

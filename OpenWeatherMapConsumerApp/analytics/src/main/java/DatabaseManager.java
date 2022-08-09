@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public interface DatabaseManager {
     Connection openDatabase(String databaseDirectory);
@@ -9,5 +10,5 @@ public interface DatabaseManager {
 
     void databasePut(Weather weather, String databaseDirectory);
 
-    void databaseGet(String databaseDirectory);
+    ArrayList<ArrayList<String>> databaseGet(String databaseDirectory);
 }
