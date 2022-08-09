@@ -5,7 +5,7 @@ import java.io.IOException;
 public class TemperatureARFFFileCreator {
 
     public File createFileToWrite(String rootDirectory) {
-        File temperatureFile = new File(rootDirectory + "temperature.arff");
+        File temperatureFile = new File(rootDirectory + "/temperature.arff");
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(temperatureFile);

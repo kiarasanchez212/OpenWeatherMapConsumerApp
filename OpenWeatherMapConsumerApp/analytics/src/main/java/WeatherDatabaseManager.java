@@ -87,9 +87,6 @@ public class WeatherDatabaseManager implements DatabaseManager {
             System.out.println(e.getMessage());
         }
         weatherDatabaseManager.closeDatabase(databaseConnection);
-        for (ArrayList<String> strings : databaseContentList) {
-            System.out.println(strings);
-        }
         return databaseContentList;
     }
 }

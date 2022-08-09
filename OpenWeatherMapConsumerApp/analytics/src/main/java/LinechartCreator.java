@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class DataExploiter {
+public class LinechartCreator {
     public void createLineChart(String rootDirectory, ArrayList<ArrayList<String>> databaseContentList) throws IOException {
         var dataset = createWeatherMeasuresXYSeriesCollection(databaseContentList);
         JFreeChart chart = createJFreeChart(dataset);
@@ -81,6 +81,5 @@ public class DataExploiter {
                         new Font("Serif", Font.BOLD, 18)
                 )
         );
-
     }
 }
